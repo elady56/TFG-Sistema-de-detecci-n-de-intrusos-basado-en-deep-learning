@@ -1,0 +1,6 @@
+virtualenv env
+source env/bin/activate
+
+pip list
+
+pip freeze > requirements.txt
