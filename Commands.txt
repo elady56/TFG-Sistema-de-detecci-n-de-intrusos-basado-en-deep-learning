@@ -4,3 +4,5 @@ source env/bin/activate
 pip list
 
 pip freeze > requirements.txt
+pip install pipreqs 
+pipreqs PATH
