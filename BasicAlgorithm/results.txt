@@ -1,0 +1,9 @@
+Normal: 0.5032
+Attack: 0.5
+Portmap: 0.501
+UDPLag: 0.4998
+Syn: 0.5001
+UDP: 0.5004
+LDAP: 0.5002
+NetBIOS: 0.5002
+MSSQL: 0.5003
