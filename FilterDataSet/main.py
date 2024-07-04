@@ -9,6 +9,7 @@ features_dir=Path.home() / "TFG"/ "Features.txt"
 def process_csv_file(dir_name,file, desired_cols):
     df = pd.read_csv(file)
     print(df.columns)
+
     df = df[desired_cols]
     save_path = save_dir/dir_name/file.name
     #print(save_path)

@@ -2,6 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from pathlib import Path
+import numpy as np
 
 path = Path.home()/"TFG"/"Dataset_OK"/"CSV"
 path_output = Path.home()/"TFG"/"TFG-Sistema-de-detecci-n-de-intrusos-basado-en-deep-learning"/"Correlation"/"output"
@@ -28,7 +29,7 @@ def transformNoNumericalColumnsAndNullValue():
     df.to_csv(path / "Total-First-Day" / "total2.csv", index=None)
 
 def dropColumns():
-    df = pd.read_csv(path_output / "columns.csv")
+    """df = pd.read_csv(path_output / "columns.csv")
     df = df.reindex(df['value'].abs().sort_values(ascending=False).index)
     print(df)
     remove=set()
@@ -40,12 +41,22 @@ def dropColumns():
         elif row[1]["param2"] not in keep:
             remove.add(row[1]["param2"])
 
-    df = pd.read_csv(path / "Total-First-Day"  / "total2.csv")
+    #df = pd.read_csv(path / "Total-First-Day"  / "total2.csv")
+    print("REMOVED")
+    print(remove)
+    print("-------------------------------------------")
+    print("SAVED")
+    print(keep)
+    print("--------------------")
+    return
     df = df.drop (columns=list(remove), axis=1)
-    df.to_csv(path / "total_final.csv", index=None)
+    df.to_csv(path / "total_final.csv", index=None)"""
+    df = pd.read_csv(path / "Total-First-Day" /"total_final.csv")
     correlation_matrix = df.corr(numeric_only=True)
     plt.figure(figsize=(10, 8))
-    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
+    mask = np.triu(np.ones_like(correlation_matrix, dtype=bool))
+    sns.heatmap(correlation_matrix, mask=mask, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
+    #sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
     plt.title('Correlation End matrix')
     plt.show()
 
@@ -61,11 +72,14 @@ def columnFilter():
 
 def correlationIni():
     df = pd.read_csv(path / "Total-First-Day" / "total2.csv")
+    df = df.drop(columns=['Label', 'type'])
     print(df.shape)
     correlation_matrix = df.corr()
-    correlation_matrix.to_csv("output/correlation.csv")
+    #correlation_matrix.to_csv("output/correlation.csv")
     plt.figure(figsize=(10, 8))
-    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
+    mask = np.triu(np.ones_like(correlation_matrix, dtype=bool))
+    sns.heatmap(correlation_matrix, mask=mask, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
+    #sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
     plt.title('Correlation Ini matrix')
     plt.show()
 
@@ -75,9 +89,9 @@ if __name__ == '__main__':
     #transformNoNumericalColumnsAndNullValue()
     #correlationIni()
     #columnFilter()
-    #dropColumns()
-    df = pd.read_csv(path / "Total-First-Day" / "total2.csv")
-    print(df.groupby("Bwd PSH Flags").size())
+    dropColumns()
+    #df = pd.read_csv(path / "Total-First-Day" / "total2.csv")
+    #print(df.groupby("Bwd PSH Flags").size())
 
 
 

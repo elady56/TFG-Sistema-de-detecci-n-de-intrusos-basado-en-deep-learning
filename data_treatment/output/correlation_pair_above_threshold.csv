@@ -1,0 +1,152 @@
+param1,param2,value
+Bwd Packet Length Mean,Avg Bwd Segment Size,1.0000
+Total Backward Packets,Subflow Bwd Packets,1.0000
+Total Fwd Packets,Subflow Fwd Packets,1.0000
+Total Length of Bwd Packets,Subflow Bwd Bytes,1.0000
+Fwd Packet Length Mean,Avg Fwd Segment Size,1.0000
+Total Length of Fwd Packets,Subflow Fwd Bytes,1.0000
+Flow Packets/s,Fwd Packets/s,0.9994
+Fwd Packet Length Min,Min Packet Length,0.9984
+Flow Duration,Fwd IAT Total,0.9975
+Packet Length Mean,Average Packet Size,0.9964
+Fwd Packet Length Min,Fwd Packet Length Mean,0.9921
+Fwd Packet Length Min,Avg Fwd Segment Size,0.9921
+Flow IAT Max,Fwd IAT Max,0.9910
+Min Packet Length,Avg Fwd Segment Size,0.9900
+Fwd Packet Length Mean,Min Packet Length,0.9900
+Fwd Packet Length Mean,Average Packet Size,0.9874
+Average Packet Size,Avg Fwd Segment Size,0.9874
+Idle Mean,Idle Max,0.9858
+Min Packet Length,Average Packet Size,0.9835
+Fwd Packet Length Min,Average Packet Size,0.9833
+Flow IAT Min,Fwd IAT Min,0.9781
+Fwd Packet Length Mean,Packet Length Mean,0.9774
+Packet Length Mean,Avg Fwd Segment Size,0.9774
+Active Mean,Active Min,0.9727
+Fwd IAT Max,Idle Max,0.9705
+Fwd Packet Length Min,Packet Length Mean,0.9684
+Min Packet Length,Packet Length Mean,0.9681
+Flow IAT Max,Idle Max,0.9659
+Flow IAT Std,Fwd IAT Std,0.9587
+Fwd IAT Max,Idle Mean,0.9564
+Flow IAT Max,Idle Mean,0.9522
+Bwd Packet Length Std,Packet Length Std,0.9466
+Fwd Header Length,min_seg_size_forward,0.9352
+Flow IAT Mean,Fwd IAT Mean,0.9339
+Fwd IAT Std,Fwd IAT Max,0.9315
+Flow IAT Max,Fwd IAT Std,0.9229
+Bwd IAT Mean,Bwd IAT Std,0.9213
+Flow IAT Std,Fwd IAT Mean,0.9162
+Bwd IAT Std,Bwd IAT Max,0.9111
+Active Mean,Active Max,0.9062
+Fwd IAT Mean,Fwd IAT Std,0.9053
+Bwd Packet Length Max,Bwd Packet Length Std,0.9050
+Total Backward Packets,Subflow Bwd Bytes,0.9046
+Subflow Bwd Packets,Subflow Bwd Bytes,0.9046
+Total Length of Bwd Packets,Subflow Bwd Packets,0.9046
+Total Backward Packets,Total Length of Bwd Packets,0.9046
+Fwd IAT Std,Idle Max,0.8986
+Packet Length Std,Avg Bwd Segment Size,0.8954
+Bwd Packet Length Mean,Packet Length Std,0.8954
+Flow IAT Mean,Flow IAT Std,0.8908
+Flow Bytes/s,Min Packet Length,0.8861
+Fwd Packet Length Min,Flow Bytes/s,0.8846
+Fwd IAT Std,Idle Mean,0.8824
+Flow IAT Std,Flow IAT Max,0.8809
+Flow Bytes/s,Average Packet Size,0.8788
+Fwd Packet Length Max,Fwd Packet Length Mean,0.8781
+Fwd Packet Length Max,Avg Fwd Segment Size,0.8781
+Bwd Packet Length Max,Packet Length Std,0.8781
+Fwd Packet Length Mean,Flow Bytes/s,0.8778
+Flow Bytes/s,Avg Fwd Segment Size,0.8778
+Bwd Packet Length Std,Avg Bwd Segment Size,0.8775
+Bwd Packet Length Mean,Bwd Packet Length Std,0.8775
+Bwd IAT Total,Bwd IAT Max,0.8745
+Fwd Packet Length Max,Packet Length Mean,0.8745
+Bwd IAT Max,Idle Mean,0.8696
+Fwd Packet Length Max,Average Packet Size,0.8637
+Flow Bytes/s,Packet Length Mean,0.8599
+Flow IAT Std,Fwd IAT Max,0.8583
+Bwd IAT Max,Idle Max,0.8542
+Fwd IAT Total,Fwd IAT Max,0.8471
+Flow Duration,Flow IAT Max,0.8462
+Flow Duration,Idle Max,0.8459
+Flow Duration,Fwd IAT Max,0.8455
+Fwd IAT Total,Idle Max,0.8453
+Flow IAT Max,Bwd IAT Max,0.8416
+Flow IAT Max,Fwd IAT Total,0.8390
+Flow IAT Std,Idle Max,0.8371
+Bwd Packet Length Max,Max Packet Length,0.8295
+Fwd IAT Max,Bwd IAT Max,0.8286
+Flow Duration,Bwd IAT Total,0.8269
+Flow Duration,Idle Mean,0.8252
+Fwd IAT Total,Idle Mean,0.8243
+Fwd Packet Length Max,Fwd Packet Length Min,0.8236
+Fwd IAT Total,Bwd IAT Total,0.8225
+Fwd Packet Length Max,Min Packet Length,0.8213
+Flow IAT Std,Idle Mean,0.8132
+Active Max,Active Min,0.8131
+Fwd IAT Total,Fwd IAT Std,0.8092
+Flow Duration,Fwd IAT Std,0.8077
+Bwd IAT Total,Bwd IAT Std,0.8025
+Total Fwd Packets,Subflow Fwd Bytes,0.7895
+Total Length of Fwd Packets,Subflow Fwd Packets,0.7895
+Subflow Fwd Packets,Subflow Fwd Bytes,0.7895
+Total Fwd Packets,Total Length of Fwd Packets,0.7895
+Flow IAT Mean,Fwd IAT Std,0.7852
+Bwd Packet Length Max,Avg Bwd Segment Size,0.7819
+Bwd Packet Length Max,Bwd Packet Length Mean,0.7819
+Bwd IAT Total,Idle Mean,0.7802
+Total Length of Bwd Packets,Packet Length Variance,0.7800
+Packet Length Variance,Subflow Bwd Bytes,0.7800
+Bwd Packet Length Max,Packet Length Variance,0.7777
+Flow Duration,Flow IAT Std,0.7688
+Bwd IAT Total,Idle Max,0.7575
+Bwd IAT Std,Idle Mean,0.7572
+Flow IAT Std,Fwd IAT Total,0.7557
+Max Packet Length,Packet Length Std,0.7494
+Flow IAT Max,Bwd IAT Std,0.7484
+Bwd Packet Length Std,Max Packet Length,0.7439
+Bwd IAT Std,Idle Max,0.7413
+Flow IAT Max,Bwd IAT Total,0.7397
+Fwd IAT Mean,Fwd IAT Max,0.7373
+Fwd IAT Max,Bwd IAT Total,0.7360
+Flow Duration,Bwd IAT Max,0.7352
+Fwd Packet Length Max,Flow Bytes/s,0.7312
+Flow IAT Max,Fwd IAT Mean,0.7302
+Fwd IAT Total,Fwd IAT Mean,0.7275
+Fwd IAT Total,Bwd IAT Max,0.7260
+Flow Duration,Fwd IAT Mean,0.7259
+Fwd IAT Mean,Idle Max,0.7189
+Fwd IAT Max,Bwd IAT Std,0.7154
+Bwd IAT Mean,Bwd IAT Max,0.7040
+Flow Duration,Bwd IAT Std,0.6900
+Packet Length Std,Packet Length Variance,0.6838
+Max Packet Length,Packet Length Variance,0.6830
+Fwd IAT Mean,Idle Mean,0.6768
+Fwd Packet Length Std,Packet Length Std,0.6762
+Fwd IAT Total,Bwd IAT Std,0.6718
+Bwd IAT Total,Bwd IAT Mean,0.6589
+Fwd IAT Std,Bwd IAT Max,0.6562
+Fwd Packet Length Max,Max Packet Length,0.6547
+Bwd Packet Length Std,Packet Length Variance,0.6432
+Fwd IAT Std,Bwd IAT Std,0.6387
+Total Backward Packets,Subflow Fwd Packets,0.6383
+Total Fwd Packets,Total Backward Packets,0.6383
+Total Fwd Packets,Subflow Bwd Packets,0.6383
+Subflow Fwd Packets,Subflow Bwd Packets,0.6383
+Flow IAT Mean,Flow IAT Max,0.6288
+Total Backward Packets,Bwd Packet Length Max,0.6204
+Bwd Packet Length Max,Subflow Bwd Packets,0.6204
+Active Std,Active Max,0.6203
+Total Length of Bwd Packets,Bwd Packet Length Max,0.6155
+Bwd Packet Length Max,Subflow Bwd Bytes,0.6155
+Flow IAT Std,Bwd IAT Std,0.6148
+Packet Length Variance,Subflow Bwd Packets,0.6147
+Total Backward Packets,Packet Length Variance,0.6147
+Flow Duration,Flow IAT Mean,0.6134
+Max Packet Length,Avg Bwd Segment Size,0.6112
+Bwd Packet Length Mean,Max Packet Length,0.6112
+Fwd IAT Std,Bwd IAT Total,0.6057
+Flow IAT Mean,Fwd IAT Max,0.6038
+Flow IAT Mean,Fwd IAT Total,0.6002
