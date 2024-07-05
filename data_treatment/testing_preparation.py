@@ -80,18 +80,14 @@ def initial_treatment(df):
     for column in ['Source IP', 'Destination IP']:
         df[column] = df[column].map(ip_index_map)
 
-    #[2.3] String treatment - Timestamp
-    df['Timestamp']=pd.to_datetime(df['Timestamp'])
-    df['Timestamp'] = df['Timestamp'].apply(lambda x: int(x.timestamp()))
-
-    #[2.4] Null value treatment - replace them with 0
+    #[2.3] Null value treatment - replace them with 0
     null_columns = df.isnull().sum()
     null_columns = null_columns[null_columns > 0]
     df[null_columns.index] = df[null_columns.index].fillna(0)
     #print(null_columns)
 
 
-    #[2.5] Inf value treatment - replace them with -1
+    #[2.4] Inf value treatment - replace them with -1
 
     #numeric_columns = df.select_dtypes(include=[np.number]).columns
     #inf_columns = np.isinf(df[numeric_columns]).sum()
@@ -100,7 +96,7 @@ def initial_treatment(df):
 
     df.replace([np.inf, -np.inf], -1, inplace=True)
 
-    # [2.6] Replace Label with 0/1
+    # [2.5] Replace Label with 0/1
     df['Label'] = df['Label'].apply(lambda x: 0 if x == 'BENIGN' else 1)
 
     return df
