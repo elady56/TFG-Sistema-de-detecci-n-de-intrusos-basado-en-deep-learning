@@ -3,7 +3,7 @@ import pandas as pd
 import random
 
 
-input_path = Path.home() / "TFG" / "Dataset_OK" / "CSV"
+input_path = Path.home() / "TFG" / "Dataset" / "Testing"
 output_path = Path.home() / "TFG" / "TFG-Sistema-de-detecci-n-de-intrusos-basado-en-deep-learning"/"BasicAlgorithm"/"Results"
 
 """def create_table(input_file, output_file):
@@ -66,7 +66,7 @@ def random_algorithm(file):
 
     for l in labels:
         aux= random.randint(0,1)
-        if l == "BENIGN":
+        if l == 0:
             total_benign+=1
             if aux == 0:
                 detected_benign+=1
@@ -77,6 +77,47 @@ def random_algorithm(file):
     return total_benign,total_attack,detected_benign,detected_attack
 
 
+def always_true(file):
+    df = pd.read_csv(file)
+    labels = df['Label']
+    total_benign = 0.0
+    total_attack = 0.0
+    detected_benign = 0.0
+    detected_attack = 0.0
+
+    for l in labels:
+        aux= 1
+        if l == 0:
+            total_benign+=1
+            if aux == 0:
+                detected_benign+=1
+        else:
+            total_attack+=1
+            if aux == 1:
+                detected_attack+=1
+    return total_benign,total_attack,detected_benign,detected_attack
+
+
+def always_false(file):
+    df = pd.read_csv(file)
+    labels = df['Label']
+    total_benign = 0.0
+    total_attack = 0.0
+    detected_benign = 0.0
+    detected_attack = 0.0
+
+    for l in labels:
+        aux= 0
+        if l == 0:
+            total_benign+=1
+            if aux == 0:
+                detected_benign+=1
+        else:
+            total_attack+=1
+            if aux == 1:
+                detected_attack+=1
+    return total_benign,total_attack,detected_benign,detected_attack
+
 
 if __name__ == '__main__':
     output = open("results.txt", "w")
@@ -86,8 +127,8 @@ if __name__ == '__main__':
     detected_benign = 0.0
     detected_attack = 0.0
 
-    for file in Path(input_path/"CSV-01-12").rglob('*.csv'):
-        values=random_algorithm(file)
+    for file in Path(input_path).rglob('*.csv'):
+        values=always_true(file)
         total_benign+=values[0]
         total_attack+=values[1]
         detected_benign+=values[2]
@@ -98,9 +139,9 @@ if __name__ == '__main__':
     output.write("Attack: " + str(round(detected_attack/ total_attack,4)) + "\n")
 
     #CSV-03-11
-    for file in Path(input_path / "CSV-03-11").rglob('*.csv'):
+    for file in Path(input_path/"Attacks").rglob('*.csv'):
         print(file.name)
-        values = random_algorithm(file)
+        values = always_true(file)
         total_benign = values[0]
         total_attack = values[1]
         detected_benign = values[2]
@@ -114,7 +155,6 @@ if __name__ == '__main__':
     input_file = file
     output_file = dir.name+"/"+file.name
     create_table(input_file, output_file)"""
-
 
 
 
