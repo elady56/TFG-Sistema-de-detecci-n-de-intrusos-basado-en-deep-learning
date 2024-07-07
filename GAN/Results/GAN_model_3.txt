@@ -1,91 +1,91 @@
-File: C:\Users\xliu\Documents\TFG\Test\LDAP.csv - Test Accuracy: 0.965250551700592, Test Loss: 0.22829847037792206
+File: C:\Users\xliu\Documents\TFG\Test\LDAP.csv - Test Accuracy: 0.965469479560852, Test Loss: 0.22605711221694946
               precision    recall  f1-score   support
 
-           0     0.9999    0.9298    0.9636      8821
-           1     0.9358    0.9999    0.9668      9021
+           0     0.9999    0.9310    0.9642      9021
+           1     0.9355    0.9999    0.9666      9021
 
-    accuracy                         0.9653     17842
-   macro avg     0.9678    0.9649    0.9652     17842
-weighted avg     0.9675    0.9653    0.9652     17842
+    accuracy                         0.9655     18042
+   macro avg     0.9677    0.9655    0.9654     18042
+weighted avg     0.9677    0.9655    0.9654     18042
 
 C:\Users\xliu\Documents\TFG\Test\LDAP.csv: Detection Rate = 0.9998891475446181
-File: C:\Users\xliu\Documents\TFG\Test\MSSQL.csv - Test Accuracy: 0.9766281843185425, Test Loss: 0.21465817093849182
+File: C:\Users\xliu\Documents\TFG\Test\MSSQL.csv - Test Accuracy: 0.9756678938865662, Test Loss: 0.21379733085632324
               precision    recall  f1-score   support
 
-           0     1.0000    0.9527    0.9758      8821
-           1     0.9558    1.0000    0.9774      9021
+           0     1.0000    0.9513    0.9751      9021
+           1     0.9536    1.0000    0.9762      9021
 
-    accuracy                         0.9766     17842
-   macro avg     0.9779    0.9764    0.9766     17842
-weighted avg     0.9777    0.9766    0.9766     17842
+    accuracy                         0.9757     18042
+   macro avg     0.9768    0.9757    0.9757     18042
+weighted avg     0.9768    0.9757    0.9757     18042
 
 C:\Users\xliu\Documents\TFG\Test\MSSQL.csv: Detection Rate = 1.0
-File: C:\Users\xliu\Documents\TFG\Test\NetBIOS.csv - Test Accuracy: 0.9631767868995667, Test Loss: 0.23079067468643188
+File: C:\Users\xliu\Documents\TFG\Test\NetBIOS.csv - Test Accuracy: 0.9617559313774109, Test Loss: 0.23045077919960022
               precision    recall  f1-score   support
 
-           0     0.9999    0.9256    0.9613      8821
-           1     0.9322    0.9999    0.9649      9021
+           0     0.9999    0.9236    0.9602      9021
+           1     0.9290    0.9999    0.9632      9021
 
-    accuracy                         0.9632     17842
-   macro avg     0.9660    0.9628    0.9631     17842
-weighted avg     0.9657    0.9632    0.9631     17842
+    accuracy                         0.9618     18042
+   macro avg     0.9645    0.9618    0.9617     18042
+weighted avg     0.9645    0.9618    0.9617     18042
 
 C:\Users\xliu\Documents\TFG\Test\NetBIOS.csv: Detection Rate = 0.9998891475446181
-File: C:\Users\xliu\Documents\TFG\Test\Portmap.csv - Test Accuracy: 0.961387574672699, Test Loss: 0.23867712914943695
+File: C:\Users\xliu\Documents\TFG\Test\Portmap.csv - Test Accuracy: 0.9623697400093079, Test Loss: 0.23544737696647644
               precision    recall  f1-score   support
 
-           0     0.9961    0.9255    0.9595      8822
-           1     0.9319    0.9965    0.9631      9022
+           0     0.9962    0.9283    0.9610      9022
+           1     0.9329    0.9965    0.9636      9022
 
-    accuracy                         0.9614     17844
-   macro avg     0.9640    0.9610    0.9613     17844
-weighted avg     0.9636    0.9614    0.9613     17844
+    accuracy                         0.9624     18044
+   macro avg     0.9645    0.9624    0.9623     18044
+weighted avg     0.9645    0.9624    0.9623     18044
 
 C:\Users\xliu\Documents\TFG\Test\Portmap.csv: Detection Rate = 0.9964531146087342
-File: C:\Users\xliu\Documents\TFG\Test\Syn.csv - Test Accuracy: 0.8366774916648865, Test Loss: 0.6184860467910767
+File: C:\Users\xliu\Documents\TFG\Test\Syn.csv - Test Accuracy: 0.8330562114715576, Test Loss: 0.6154677271842957
               precision    recall  f1-score   support
 
-           0     0.8488    0.8148    0.8314      8821
-           1     0.8257    0.8581    0.8416      9021
+           0     0.8520    0.8061    0.8284      9021
+           1     0.8160    0.8600    0.8374      9021
 
-    accuracy                         0.8367     17842
-   macro avg     0.8373    0.8364    0.8365     17842
-weighted avg     0.8371    0.8367    0.8366     17842
+    accuracy                         0.8331     18042
+   macro avg     0.8340    0.8331    0.8329     18042
+weighted avg     0.8340    0.8331    0.8329     18042
 
-C:\Users\xliu\Documents\TFG\Test\Syn.csv: Detection Rate = 0.858108857111185
-File: C:\Users\xliu\Documents\TFG\Test\UDP.csv - Test Accuracy: 0.974610447883606, Test Loss: 0.21705810725688934
+C:\Users\xliu\Documents\TFG\Test\Syn.csv: Detection Rate = 0.8599933488526771
+File: C:\Users\xliu\Documents\TFG\Test\UDP.csv - Test Accuracy: 0.9737279415130615, Test Loss: 0.2161320149898529
               precision    recall  f1-score   support
 
-           0     1.0000    0.9486    0.9736      8821
-           1     0.9522    1.0000    0.9755      9021
+           0     1.0000    0.9475    0.9730      9021
+           1     0.9501    1.0000    0.9744      9021
 
-    accuracy                         0.9746     17842
-   macro avg     0.9761    0.9743    0.9746     17842
-weighted avg     0.9758    0.9746    0.9746     17842
+    accuracy                         0.9737     18042
+   macro avg     0.9750    0.9737    0.9737     18042
+weighted avg     0.9750    0.9737    0.9737     18042
 
 C:\Users\xliu\Documents\TFG\Test\UDP.csv: Detection Rate = 1.0
-File: C:\Users\xliu\Documents\TFG\Test\UDPLag.csv - Test Accuracy: 0.9309080839157104, Test Loss: 0.428864449262619
+File: C:\Users\xliu\Documents\TFG\Test\UDPLag.csv - Test Accuracy: 0.9164441823959351, Test Loss: 0.42074599862098694
               precision    recall  f1-score   support
 
-           0     0.9075    0.9504    0.9285      1673
-           1     0.9537    0.9135    0.9332      1873
+           0     0.9176    0.9151    0.9163      1873
+           1     0.9153    0.9178    0.9166      1873
 
-    accuracy                         0.9309      3546
-   macro avg     0.9306    0.9319    0.9308      3546
-weighted avg     0.9319    0.9309    0.9310      3546
+    accuracy                         0.9164      3746
+   macro avg     0.9164    0.9164    0.9164      3746
+weighted avg     0.9164    0.9164    0.9164      3746
 
-C:\Users\xliu\Documents\TFG\Test\UDPLag.csv: Detection Rate = 0.9135077415910304
-Overall Accuracy: 0.9457956600361663
-Overall Recall: 0.9736428571428571
-Overall Precision: 0.9234625611842217
-Overall F1 Score: 0.9478890501812366
-Average Detection Rate: 0.9668354297714552
+C:\Users\xliu\Documents\TFG\Test\UDPLag.csv: Detection Rate = 0.9177789642285105
+Overall Accuracy: 0.944375
+Overall Recall: 0.9740892857142858
+Overall Precision: 0.9194478155339806
+Overall F1 Score: 0.9459801609322974
+Average Detection Rate: 0.9677148175398796
 Overall Classification Report:
               precision    recall  f1-score   support
 
-           0     0.9714    0.9172    0.9435     54600
-           1     0.9235    0.9736    0.9479     56000
+           0     0.9725    0.9147    0.9427     56000
+           1     0.9194    0.9741    0.9460     56000
 
-    accuracy                         0.9458    110600
-   macro avg     0.9474    0.9454    0.9457    110600
-weighted avg     0.9471    0.9458    0.9457    110600
+    accuracy                         0.9444    112000
+   macro avg     0.9459    0.9444    0.9443    112000
+weighted avg     0.9459    0.9444    0.9443    112000
