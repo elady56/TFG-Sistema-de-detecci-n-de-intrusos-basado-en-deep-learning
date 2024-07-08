@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report, recall_score
 from pathlib import Path
@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Global variables
 train_file = Path.home() / "Documents" / "TFG" / "TrainingAndValidation" / "supervised_train.csv"
 test_file = Path.home() / "Documents" / "TFG" / "Testing" / "testing.csv"
-directory_path = Path.home() / "Documents" / "TFG" / "Testing"
+directory_path = Path.home() / "Documents" / "TFG" / "Test"
 
 # [1] Data preparation
 def load_and_prepare_data(file):
@@ -31,8 +31,6 @@ def load_and_prepare_data(file):
 
 # [2] Load all data
 def load_all_data():
-    #X_train, y_train = load_and_prepare_data(train_file)
-    #X_val, y_val = load_and_prepare_data(val_file)
     X, y = load_and_prepare_data(train_file)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
     X_test, y_test = load_and_prepare_data(test_file)
@@ -47,7 +45,6 @@ def load_all_data():
 # [3] Define LSTM model
 def build_lstm_model(trial, input_shape):
     model = tf.keras.Sequential()
-
     n_layers = trial.suggest_int('n_layers', 1, 3)
     for i in range(n_layers):
         units = trial.suggest_int(f'units_lstm_{i}', 50, 200)
@@ -58,8 +55,9 @@ def build_lstm_model(trial, input_shape):
 
     model.add(tf.keras.layers.Dropout(0.2))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-
+    learning_rate = 1e-4
+    model.compile(optimizer=tf.keras.optimizers.Adam(), loss='binary_crossentropy',
+                  metrics=['accuracy'])
 
     return model
 
@@ -69,14 +67,13 @@ def objective(trial):
     input_shape = (X_train.shape[1], X_train.shape[2])
     model = build_lstm_model(trial, input_shape)
 
-    batch_size = 64#trial.suggest_int('batch_size', 32, 128)
-    epochs = trial.suggest_int('epochs', 2, 5)
+    batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
+    epochs = trial.suggest_int('epochs', 10, 25)
 
     early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-    history = model.fit(X_train, y_train,  epochs=epochs, batch_size=batch_size, verbose=1,
+    history = model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, verbose=1,
                         validation_data=(X_val, y_val), callbacks=[early_stopping])
-
 
     # Evaluate on validation set to get detection rate
     y_val_pred = (model.predict(X_val) > 0.5).astype("int32")
@@ -97,7 +94,9 @@ def train_lstm_with_params(params, X_train, X_val, y_train, y_val):
 
     model.add(tf.keras.layers.Dropout(0.2))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    learning_rate = 1e-4
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate), loss='binary_crossentropy',
+                  metrics=['accuracy'])
 
     early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
@@ -106,26 +105,13 @@ def train_lstm_with_params(params, X_train, X_val, y_train, y_val):
 
     return model, history
 
-# [6] Evaluate detection rate on a directory of CSV files
-def evaluate_detection_rate(model, directory_path):
-    csv_files = glob.glob(str(directory_path / "*.csv"))
-
-    for file in csv_files:
-        X, y = load_and_prepare_data(file)
-        X = X.reshape((X.shape[0], 1, X.shape[1]))
-        y_pred = (model.predict(X) > 0.5).astype("int32")
-        test_loss, test_accuracy = model.evaluate(X, y)
-        print(f'Model {i} Test Accuracy: {test_accuracy}')
-        detection_rate = recall_score(y, y_pred)
-        print(f'{file}: Detection Rate = {detection_rate:.4f}')
-
 def plot(histories):
     # Plot accuracy for all models
     plt.figure(figsize=(10, 5))
     for i, history in enumerate(histories):
         plt.plot(history.history['accuracy'], label=f'Model {i} Train')
 
-    plt.title('Models Accuracy')
+    plt.title('LSTM Models Accuracy')
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
     plt.legend(loc='lower right')
@@ -137,23 +123,23 @@ def plot(histories):
     for i, history in enumerate(histories):
         plt.plot(history.history['loss'], label=f'Model {i} Train')
 
-    plt.title('Models Loss')
+    plt.title('LSTM Models Loss')
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
     plt.legend(loc='upper right')
     plt.tight_layout()
     plt.show()
 
-if name == "main":
+if __name__ == "__main__":
     # Execute the optimization
-    study = optuna.create_study(direction='maximize')
-    study.optimize(objective, n_trials=2)
+    study = optuna.create_study(direction='minimize')
+    study.optimize(objective, n_trials=25)
 
     # Load and prepare data
     X_train, X_val, X_test, y_train, y_val, y_test = load_all_data()
 
-    # Get the top 5 trials
-    top_trials = study.trials_dataframe().sort_values(by='value', ascending=False).head(5)
+    # Get the top 3 trials
+    top_trials = study.trials_dataframe().sort_values(by='value', ascending=True).head(3)
     top_models = []
     histories = []
 
@@ -166,12 +152,13 @@ if name == "main":
         for j in range(params['n_layers']):
             params[f'units_lstm_{j}'] = getattr(trial, f'params_units_lstm_{j}')
 
+
+        model_path = f"Final_LSTM_models/LSTM_model_{trial.number+1}.h5"
         model, history = train_lstm_with_params(params, X_train, X_val, y_train, y_val)
+        model.save(model_path)
+
         top_models.append((model, params))
         histories.append(history)
-
-        # Save the model
-        model.save(f'LSTM_models/optimized_lstm_model_{i}.h5')
 
         # Evaluate on the test set
         test_loss, test_accuracy = model.evaluate(X_test, y_test)
@@ -180,19 +167,7 @@ if name == "main":
         # Print classification report
         y_pred = (model.predict(X_test) > 0.5).astype("int32")
         detection_rate = recall_score(y_test, y_pred)
-        print("Detection rate" + str(detection_rate))
         print(f'Model {i} Classification Report:')
         print(classification_report(y_test, y_pred, digits=4))
-
-        print(f'Evaluating detection rate for Model {i}')
-        csv_files = glob.glob(str(directory_path / "*.csv"))
-
-        for file in csv_files:
-            X, y = load_and_prepare_data(file)
-            X = X.reshape((X.shape[0], 1, X.shape[1]))
-            y_pred = (model.predict(X) > 0.5).astype("int32")
-            print(classification_report(y, y_pred, digits=4))
-            detection_rate = recall_score(y, y_pred)
-            print(f'{file}: Detection Rate = {detection_rate:.4f}')
 
     plot(histories)
