@@ -100,6 +100,7 @@ def correlation(df, fig_name):
     mask = np.triu(np.ones_like(correlation_matrix, dtype=bool))
     sns.heatmap(correlation_matrix, mask=mask, cmap='coolwarm', annot=False)
     plt.title(fig_name)
+    plt.savefig(f'output/{fig_name}.pdf', format='pdf')
     plt.show()
 
 #[4] Columns filter
@@ -174,7 +175,7 @@ if __name__ == "__main__":
     print(initial_treated_df.groupby("Label").size())
 
     #[3] Initial correlation
-    correlation(initial_treated_df, "Initial Correlation Mtrix")
+    correlation(initial_treated_df, "Initial Correlation Matrix")
 
     #[4] Columns filter
     columnFilter()

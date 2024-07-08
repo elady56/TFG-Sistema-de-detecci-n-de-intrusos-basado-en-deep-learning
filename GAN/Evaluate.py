@@ -77,6 +77,7 @@ def plot_ROC_curve(total):
     plt.title('Curva ROC - Comparación de Modelos')
     plt.legend(loc="lower right")
     plt.grid(True)
+    plt.savefig("Results/ROC Curve.pdf", format='pdf')
     plt.show()
 
 if __name__ == "__main__":

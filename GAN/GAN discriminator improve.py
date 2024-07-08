@@ -72,6 +72,7 @@ def plot_histories(histories):
     plt.ylabel('Accuracy')
     plt.legend()
     plt.title('GAN Model Accuracy Over Epochs')
+    plt.savefig("Results/GAN Accuracy.pdf", format='pdf')
     plt.show()
 
     # Loss
@@ -82,6 +83,7 @@ def plot_histories(histories):
     plt.ylabel('Loss')
     plt.legend()
     plt.title('GAN Model Loss Over Epochs')
+    plt.savefig("Results/GAN Loss.pdf", format='pdf')
     plt.show()
 
 

@@ -105,8 +105,8 @@ def train_lstm_with_params(params, X_train, X_val, y_train, y_val):
 
     return model, history
 
+# [6] Plot accuracy and loss over epochs
 def plot(histories):
-    # Plot accuracy for all models
     plt.figure(figsize=(10, 5))
     for i, history in enumerate(histories):
         plt.plot(history.history['accuracy'], label=f'Model {i} Train')
@@ -116,9 +116,9 @@ def plot(histories):
     plt.xlabel('Epoch')
     plt.legend(loc='lower right')
     plt.tight_layout()
+    plt.savefig("Results/LSTM Accuracy.pdf", format='pdf')
     plt.show()
 
-    # Plot loss for all models
     plt.figure(figsize=(10, 5))
     for i, history in enumerate(histories):
         plt.plot(history.history['loss'], label=f'Model {i} Train')
@@ -128,17 +128,18 @@ def plot(histories):
     plt.xlabel('Epoch')
     plt.legend(loc='upper right')
     plt.tight_layout()
+    plt.savefig("Results/LSTM Loss.pdf", format='pdf')
     plt.show()
 
 if __name__ == "__main__":
-    # Execute the optimization
+    # Optimization
     study = optuna.create_study(direction='minimize')
     study.optimize(objective, n_trials=25)
 
-    # Load and prepare data
+    # Load data
     X_train, X_val, X_test, y_train, y_val, y_test = load_all_data()
 
-    # Get the top 3 trials
+    # Get the top 3 models
     top_trials = study.trials_dataframe().sort_values(by='value', ascending=True).head(3)
     top_models = []
     histories = []
@@ -152,7 +153,7 @@ if __name__ == "__main__":
         for j in range(params['n_layers']):
             params[f'units_lstm_{j}'] = getattr(trial, f'params_units_lstm_{j}')
 
-
+        # Save LSTM models
         model_path = f"Final_LSTM_models/LSTM_model_{trial.number+1}.h5"
         model, history = train_lstm_with_params(params, X_train, X_val, y_train, y_val)
         model.save(model_path)
@@ -160,11 +161,9 @@ if __name__ == "__main__":
         top_models.append((model, params))
         histories.append(history)
 
-        # Evaluate on the test set
         test_loss, test_accuracy = model.evaluate(X_test, y_test)
         print(f'Model {i} Test Accuracy: {test_accuracy}')
 
-        # Print classification report
         y_pred = (model.predict(X_test) > 0.5).astype("int32")
         detection_rate = recall_score(y_test, y_pred)
         print(f'Model {i} Classification Report:')
