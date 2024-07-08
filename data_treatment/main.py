@@ -36,7 +36,7 @@ def downsample_first(number):
             LDAP_data=(df[df[' Label'] == 'DrDoS_LDAP']).sample(n=number, random_state=42)
             total = pd.concat([total, LDAP_data], ignore_index=True)
 
-    BENIGN_data = BENIGN_data.sample(n=56000, random_state=42)
+    BENIGN_data = BENIGN_data.sample(n=72000, random_state=42)
 
     total = pd.concat([total, BENIGN_data], ignore_index=True)
     print("Nice")
