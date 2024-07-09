@@ -78,7 +78,7 @@ def objective(trial):
     batch_size = trial.suggest_categorical('batch_size', [128, 256])
     half_batch = batch_size // 2
 
-    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=2, restore_best_weights=True)
+    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
     for epoch in range(epochs):
         for _ in range(X_train.shape[0] // batch_size):
